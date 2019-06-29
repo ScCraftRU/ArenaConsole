@@ -2,12 +2,12 @@ import java.util.Scanner;
 
 public class Main {
 
-    static Scanner in;
-    static String токен;
-    static String консоль;
+    private static Scanner in;
+    private static String токен;
+    private static String консоль;
 
     public static void main(String[] args) {
-        System.out.println("ArenaConsole 0.1 (C) ScCraft 2015-2018");
+        System.out.println("ArenaConsole 0.1 (C) ScCraft 2015-2019");
         in = new Scanner(System.in);
         System.out.println("##################################");
         System.out.print("Введите токен от MyArena API\n>>>");
@@ -18,12 +18,12 @@ public class Main {
         меню();
     }
 
-    static void обновить() {
+    private static void обновить() {
         API_запрос запрос = new API_запрос("getconsole", токен);
         консоль = "" + API_ответ.fromJSON(NetGet.getOneLine(запрос.toHTTPs()));
     }
 
-    static void меню() {
+    private static void меню() {
         System.out.println("update - обновить");
         System.out.println("exit - выход");
         String комманда = in.nextLine();
@@ -41,12 +41,12 @@ public class Main {
         меню();
     }
 
-    static void вывести_консоль() {
+    private static void вывести_консоль() {
         обновить();
         System.out.println(консоль);
     }
 
-    static void выполнить_комманду(String комманда) {
+    private static void выполнить_комманду(String комманда) {
         API_cmd api_cmd = new API_cmd(токен);
         api_cmd.cmd = комманда;
         NetGet.getOneLine(api_cmd.toHTTPs());
