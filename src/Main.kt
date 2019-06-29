@@ -19,7 +19,7 @@ private var консоль = ""
 
     private fun обновить() {
         val запрос = API_запрос("getconsole", токен)
-        консоль = "" + API_консоль.fromJSON(NetGet.getOneLine(запрос.toHTTPs()))
+        консоль = "" + API_консоль.fromJSON(getOneLine(запрос.toHTTPs()))
     }
 
     private fun меню() {
@@ -48,5 +48,5 @@ private var консоль = ""
     private fun выполнить_комманду(комманда: String) {
         val api_cmd = API_cmd(токен)
         api_cmd.cmd = комманда
-        NetGet.getOneLine(api_cmd.toHTTPs())
+        getOneLine(api_cmd.toHTTPs())
     }
