@@ -1,0 +1,26 @@
+import com.google.gson.GsonBuilder
+
+class API_консоль {
+
+    internal var status = ""
+    internal var console_log = ""
+    internal var message = ""
+
+    internal fun успех(): Boolean {
+        return status == "OK"
+    }
+
+    override fun toString(): String {
+        if (успех()) return console_log
+        else return message
+    }
+
+    companion object {
+
+        fun fromJSON(JSON: String): API_консоль {
+            val builder = GsonBuilder()
+            val gson = builder.create()
+            return gson.fromJson(JSON, API_консоль::class.java)
+        }
+    }
+}
