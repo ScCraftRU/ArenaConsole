@@ -6,11 +6,15 @@ private var ввод = Scanner(System.`in`)
 var токен = ""
 private var консоль = ""
 
-fun main() {
+fun main(args: Array<String>) {
     println("ArenaConsole $version (C) ScCraft 2015-2019")
     println("##################################")
     print("Введите токен от MyArena API\n>>>")
-    токен = ввод.next()
+    if (args.size == 0) {
+        токен = ввод.next()
+    } else {
+        токен = args[0]
+    }
     println("Авторизация завершена!")
     println("##################################")
     вывести_консоль()
