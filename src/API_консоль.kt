@@ -1,12 +1,10 @@
 import com.google.gson.GsonBuilder
 
-class API_консоль {
+class API_консоль: API_ответ() {
 
-    internal var status = ""
-    internal var console_log = ""
-    internal var message = ""
+    var console_log = ""
 
-    internal fun успех(): Boolean {
+    fun успех(): Boolean {
         return status == "OK"
     }
 

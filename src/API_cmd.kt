@@ -1,5 +1,5 @@
-import java.io.UnsupportedEncodingException
 import java.net.URLEncoder
+import java.io.UnsupportedEncodingException
 
 class API_cmd internal constructor(токен: String) : API_запрос("consolecmd", токен) {
     internal var cmd = ""
