@@ -9,6 +9,8 @@ open class API_ответ() {
         return message
     }
 
+    fun успех() = status == "OK"
+
     companion object {
 
         fun fromJSON(JSON: String): API_ответ {

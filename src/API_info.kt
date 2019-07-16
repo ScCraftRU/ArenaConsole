@@ -61,9 +61,10 @@ class API_info : API_ответ() {
 
     companion object {
         fun fromJSON(JSON: String): API_info {
+            val json = JSON.replace("\"e\":[]", "\"e\":{}")
             val builder = GsonBuilder()
             val gson = builder.create()
-            return gson.fromJson(JSON, API_info::class.java)
+            return gson.fromJson(json, API_info::class.java)
         }
     }
 }

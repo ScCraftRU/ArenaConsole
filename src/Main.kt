@@ -90,3 +90,8 @@ private fun перезагрузить_сервер() {
     println(API_ответ.fromJSON(getOneLine(api_запрос.toHTTPs())))
     println("Запрос на остановку сервера отправлен")
 }
+
+private fun инфо() {
+    val JSON = getOneLine(API_запрос("status", токен).toHTTPs())
+    val api_info = API_info.fromJSON(JSON)
+}

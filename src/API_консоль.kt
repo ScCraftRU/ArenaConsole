@@ -4,10 +4,6 @@ class API_консоль: API_ответ() {
 
     var console_log = ""
 
-    fun успех(): Boolean {
-        return status == "OK"
-    }
-
     override fun toString(): String {
         if (успех()) return console_log
         else return message
