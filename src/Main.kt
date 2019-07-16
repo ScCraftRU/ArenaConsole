@@ -94,4 +94,13 @@ private fun перезагрузить_сервер() {
 private fun инфо() {
     val JSON = getOneLine(API_запрос("status", токен).toHTTPs())
     val api_info = API_info.fromJSON(JSON)
+    println("Статус :: ${статус_на_русском(api_info.status)}")
+    println("Игроки :: ${api_info.online} / ${api_info.server_maxslots}")
+}
+
+fun статус_на_русском(статус: String) = when(статус) {
+    "0" -> "Сервер выключен"
+    "1" -> "Работает"
+    "2" -> "Запускается, выключается или завис"
+    else -> "Ошибка!!! Напишите сообщение на GitHub"
 }
