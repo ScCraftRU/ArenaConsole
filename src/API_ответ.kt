@@ -1,6 +1,6 @@
 import com.google.gson.GsonBuilder
 
-open class API_ответ() {
+open class API_ответ {
 
     var status = ""
     var message = ""
