@@ -124,9 +124,11 @@ fun вывести_список_игроков() {
             println("--------------------------------")
             println("|   №   |    Ник    |   Счёт   |")
             println("--------------------------------")
-            for (i in 0..api_info.data!!.p!!.size)
+            for (i in 0..api_info.data!!.p!!.size - 1)
                 println("|${i.toString().format(7)}|${api_info.data!!.p!![i].name.format(11)}|${api_info.data!!.p!![i].score.toString().format(10)}")
             println("--------------------------------")
+        } else {
+            println("Нет игроков")
         }
     } else {
         println("ОШИБКА: Не удалось получить список игроков. Возможно, сервер выключен.")
