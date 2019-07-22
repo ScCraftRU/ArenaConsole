@@ -23,7 +23,7 @@ fun main(args: Array<String>) {
 
 private fun обновить() {
     val запрос = API_запрос("getconsole", токен)
-    консоль = "" + API_консоль.fromJSON(getOneLine(запрос.toHTTPs()))
+    консоль = "" + API_консоль.fromJSON(getOneLineHTTPs(запрос.toHTTPs()))
 }
 
 private fun меню() {
@@ -74,29 +74,29 @@ private fun вывести_консоль() {
 private fun выполнить_комманду(комманда: String) {
     val api_cmd = API_cmd(токен)
     api_cmd.cmd = комманда
-    getOneLine(api_cmd.toHTTPs())
+    getOneLineHTTPs(api_cmd.toHTTPs())
 }
 
 private fun запустить_сервер() {
     val api_запрос = API_запрос("start", токен)
-    println(API_ответ.fromJSON(getOneLine(api_запрос.toHTTPs())))
+    println(API_ответ.fromJSON(getOneLineHTTPs(api_запрос.toHTTPs())))
     println("Запрос на запуск сервера отправлен")
 }
 
 private fun остановить_сервер() {
     val api_запрос = API_запрос("stop", токен)
-    println(API_ответ.fromJSON(getOneLine(api_запрос.toHTTPs())))
+    println(API_ответ.fromJSON(getOneLineHTTPs(api_запрос.toHTTPs())))
     println("Запрос на остановку сервера отправлен")
 }
 
 private fun перезагрузить_сервер() {
     val api_запрос = API_запрос("restart", токен)
-    println(API_ответ.fromJSON(getOneLine(api_запрос.toHTTPs())))
+    println(API_ответ.fromJSON(getOneLineHTTPs(api_запрос.toHTTPs())))
     println("Запрос на остановку сервера отправлен")
 }
 
 private fun инфо() {
-    val JSON = getOneLine(API_запрос("status", токен).toHTTPs())
+    val JSON = getOneLineHTTPs(API_запрос("status", токен).toHTTPs())
     val api_info = API_info.fromJSON(JSON)
     if (api_info.успех()) {
         println("Статус    :: ${статус_на_русском(api_info.online.toString())}")
@@ -124,7 +124,7 @@ fun статус_на_русском(статус: String) = when(статус) 
 * Допустим вывод одного "несуществующего" игрока в конце (баг API)
  */
 fun вывести_список_игроков() {
-    val JSON = getOneLine(API_запрос("status", токен).toHTTPs())
+    val JSON = getOneLineHTTPs(API_запрос("status", токен).toHTTPs())
     val api_info = API_info.fromJSON(JSON)
     if (api_info.data!!.p != null) {
         if (api_info.data!!.p!!.size > 0) {
